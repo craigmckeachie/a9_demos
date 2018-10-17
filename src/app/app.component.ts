@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -15,9 +15,10 @@ import { FormGroup, FormControl } from '@angular/forms';
         <button>Sign In</button>
       </form>
 
-      <pre>
-        {{loginForm.value | json}}
+      <pre *ngIf="loginForm.get('username').invalid">
+        {{loginForm.get('username').errors | json}}
       </pre>
+
   `,
   styles: []
 })
@@ -25,7 +26,7 @@ export class AppComponent implements OnInit {
   loginForm: FormGroup;
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      username: new FormControl(),
+      username: new FormControl(null, Validators.required),
       password: new FormControl()
     });
   }
