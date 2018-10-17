@@ -9,15 +9,20 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
       </h1>
       <form [formGroup]="loginForm" (submit)="onSubmit()">
         <input formControlName="username" type="text" name="username">
+        <div *ngIf="loginForm.get('username').dirty &&
+                    loginForm.get('username').invalid &&
+                    loginForm.get('username').touched">
+          <div *ngIf="loginForm.get('username').hasError('required')">
+            Username is required.
+          </div>
+        </div>
         <br>
         <input formControlName="password" type="text" name="password">
         <br>
         <button>Sign In</button>
       </form>
 
-      <pre *ngIf="loginForm.get('username').invalid">
-        {{loginForm.get('username').errors | json}}
-      </pre>
+
 
   `,
   styles: []
@@ -25,10 +30,13 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class AppComponent implements OnInit {
   loginForm: FormGroup;
   ngOnInit(): void {
-    this.loginForm = new FormGroup({
-      username: new FormControl(null, Validators.required),
-      password: new FormControl()
-    });
+    this.loginForm = new FormGroup(
+      {
+        username: new FormControl(null, Validators.required),
+        password: new FormControl()
+      },
+      { updateOn: 'blur' }
+    );
   }
 
   onSubmit() {

@@ -43,6 +43,10 @@ export class AppComponent implements OnInit {
 }
 ```
 
+<div style="page-break-after: always;"></div>
+
+### Validation
+
 ```ts
  ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -56,4 +60,16 @@ export class AppComponent implements OnInit {
 <pre *ngIf="loginForm.get('username').invalid">
     {{loginForm.get('username').errors | json}}
 </pre>
+```
+
+### Validation Messages
+
+```html
+<div *ngIf="loginForm.get('username').dirty &&
+            loginForm.get('username').invalid &&
+            loginForm.get('username').touched">
+  <div *ngIf="loginForm.get('username').hasError('required')">
+    Username is required.
+  </div>
+</div>
 ```
