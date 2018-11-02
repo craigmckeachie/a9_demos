@@ -3,16 +3,11 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-     <a href="" (click)="onClick($event)">Click Me!</a>
+     <input [(ngModel)]="message" type="text">
      <p>{{message}}</p>
   `,
   styles: []
 })
 export class AppComponent {
   message = '';
-
-  onClick(event) {
-    event.preventDefault();
-    this.message = 'clicked';
-  }
 }
