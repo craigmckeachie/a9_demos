@@ -3,13 +3,16 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-      <img [src]="image.path" [alt]="image.name" [title]="image.name">
+     <a href="" (click)="onClick($event)">Click Me!</a>
+     <p>{{message}}</p>
   `,
   styles: []
 })
 export class AppComponent {
-  image = {
-    path: '../assets/angular_solidBlack.png',
-    name: 'Angular Logo'
-  };
+  message = '';
+
+  onClick(event) {
+    event.preventDefault();
+    this.message = 'clicked';
+  }
 }
