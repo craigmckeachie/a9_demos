@@ -3,13 +3,13 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-      <h1>
-        Welcome to {{title}}!
-      </h1>
-    <router-outlet></router-outlet>
+      <img [src]="image.path" [alt]="image.name" [title]="image.name">
   `,
   styles: []
 })
 export class AppComponent {
-  title = 'playground';
+  image = {
+    path: '../assets/angular_solidBlack.png',
+    name: 'Angular Logo'
+  };
 }
