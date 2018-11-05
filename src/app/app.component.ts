@@ -2,21 +2,17 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: ` <div>
-    <p>Without JSON pipe:</p>
-    <p>{{object}}</p>
-    <p>With JSON pipe (no pre tag):</p>
-    <p>{{object | json}}</p>
-    <p>With JSON pipe (and pre tag):</p>
-    <pre>{{object | json}}</pre>
-  </div>
+  template: `
+  <ul>
+    <li *ngFor="let fruit of fruits;
+               let i = index;">
+      {{i + 1}}.
+      {{fruit}}
+    </li>
+  </ul>
   `,
   styles: []
 })
 export class AppComponent {
-  object: Object = {
-    foo: 'bar',
-    baz: 'qux',
-    nested: { xyz: 3, numbers: [1, 2, 3, 4, 5] }
-  };
+  fruits = ['Apple', 'Orange', 'Plum'];
 }
