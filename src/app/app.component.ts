@@ -4,8 +4,13 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <p (click)="onClick()"
-    [ngClass]="calculateClasses()">
+    [style.background-color]="'orchid'">
     We need to button up ...
+    </p>
+    <p [ngStyle]="{'background-color': 'lime',
+    'font-size': '20px',
+    'font-weight': 'bold'}">
+    Here we go...
     </p>
   `,
   styles: [
