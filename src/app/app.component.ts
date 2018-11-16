@@ -3,14 +3,22 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-      <ul>
-        <li routerLinkActive="active" ><a [routerLink]="['/home']">Home</a></li>
-        <li routerLinkActive="active"><a [routerLink]="['/about']">About</a></li>
-        <li routerLinkActive="active"><a [routerLink]="['/contact']">Contact</a></li>
-      </ul>
+      <nav>
+        <a routerLinkActive="active" [routerLink]="['/home']">Home</a> |
+        <a routerLinkActive="active" [routerLink]="['/about']">About</a> |
+        <a routerLinkActive="active" [routerLink]="['/contact']">Contact</a> |
+        <a routerLinkActive="active" [routerLink]="['/movies']">Movies</a>
+      </nav>
     <router-outlet></router-outlet>
   `,
-  styles: []
+  styles: [
+    `
+      .active {
+        background-color: #dddddd;
+        padding: 5px;
+      }
+    `
+  ]
 })
 export class AppComponent {
   title = 'playground';
