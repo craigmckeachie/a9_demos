@@ -17,8 +17,7 @@ import { MoviesModule } from './movies/movies.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    MoviesModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
