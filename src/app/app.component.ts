@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FruitService } from './fruit.service';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,12 @@ import { Component } from '@angular/core';
   `,
   styles: []
 })
-export class AppComponent {
-  fruits = ['Apple', 'Orange', 'Plum'];
+export class AppComponent implements OnInit {
+  fruits = [];
+
+  constructor(private fruitService: FruitService) {}
+
+  ngOnInit(): void {
+    this.fruits = this.fruitService.list();
+  }
 }
