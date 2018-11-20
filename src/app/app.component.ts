@@ -5,11 +5,11 @@ import { PhotoService } from './photo.service';
   selector: 'app-root',
   template: `
       <h1>
-        HTTP
+        Photos
       </h1>
       <div *ngFor="let photo of photos">
       <img [src]="photo.thumbnailUrl" alt="">
-      {{photo.title}}
+      <p>{{photo.title}}</p>
       </div>
 
   `,
