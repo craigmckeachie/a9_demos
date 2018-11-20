@@ -3,8 +3,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-  <h2>{{image.name}}</h2>
-  <p>{{image.path}} </p>
+  <img [src]="image.path" [title]="image.name"
+    [alt]="image.name">
+
 `,
   styles: []
 })
