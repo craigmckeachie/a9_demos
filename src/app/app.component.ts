@@ -3,13 +3,16 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-      <h1>
-        Welcome to {{title}}!
-      </h1>
-    <router-outlet></router-outlet>
+    <a href="" (click)="onClick($event)">Click Me!</a>
+    <p [innerText]="message"></p>
   `,
   styles: []
 })
 export class AppComponent {
-  title = 'playground';
+  message = '';
+
+  onClick(event) {
+    event.preventDefault();
+    this.message = 'clicked';
+  }
 }
