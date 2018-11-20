@@ -20,6 +20,6 @@ export class AppComponent implements OnInit {
   constructor(private fruitService: FruitService) {}
 
   ngOnInit(): void {
-    this.fruits = this.fruitService.list();
+    this.fruitService.list().subscribe(data => (this.fruits = data));
   }
 }

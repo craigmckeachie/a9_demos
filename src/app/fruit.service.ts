@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { of, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -6,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class FruitService {
   constructor() {}
 
-  list(): string[] {
-    return ['Apple', 'Orange', 'Plum'];
+  list(): Observable<string[]> {
+    return of(['Apple', 'Orange', 'Plum']);
   }
 }
