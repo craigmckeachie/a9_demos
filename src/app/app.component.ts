@@ -3,12 +3,11 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-      <nav>
-        <a routerLinkActive="active" [routerLink]="['/home']">Home</a> |
-        <a routerLinkActive="active" [routerLink]="['/about']">About</a> |
-        <a routerLinkActive="active" [routerLink]="['/contact']">Contact</a> |
-        <a routerLinkActive="active" [routerLink]="['/movies']">Movies</a>
-      </nav>
+    <nav>
+      <a routerLinkActive="active" [routerLink]="['/home']">Home</a> |
+      <a routerLinkActive="active" [routerLink]="['/about']">About</a> |
+      <a routerLinkActive="active" [routerLink]="['/contact']">Contact</a> |
+    </nav>
     <router-outlet></router-outlet>
   `,
   styles: [
@@ -20,6 +19,4 @@ import { Component } from '@angular/core';
     `
   ]
 })
-export class AppComponent {
-  title = 'playground';
-}
+export class AppComponent {}
