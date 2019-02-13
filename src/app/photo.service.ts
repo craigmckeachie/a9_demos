@@ -1,34 +1,3 @@
-// import { Injectable } from '@angular/core';
-// import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-// import { Photo } from './photo.model';
-// import { Observable, throwError, concat } from 'rxjs';
-// import {
-//   catchError,
-//   retry,
-//   retryWhen,
-//   delay,
-//   take,
-//   concatAll
-// } from 'rxjs/operators';
-
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class PhotoService {
-//   constructor(private http: HttpClient) {}
-
-//   getAll(): Observable<Photo[]> {
-//     return this.http.get<Photo[]>('http://localhost:3000/photos/wrong').pipe(
-//       retryWhen(error => {
-//         return error.pipe(
-//           delay(1000),
-//           take(2)
-//         );
-//       })
-//     );
-//   }
-// }
-
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Photo } from './photo.model';
