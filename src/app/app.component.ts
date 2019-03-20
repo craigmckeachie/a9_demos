@@ -4,15 +4,17 @@ import { fromEvent } from 'rxjs';
 @Component({
   selector: 'app-root',
   template: `
-    <button #myButton>Click Me</button>
+    <input #myInput />
   `,
   styles: []
 })
 export class AppComponent implements OnInit {
-  @ViewChild('myButton') button;
+  @ViewChild('myInput') input;
   ngOnInit(): void {
-    console.log(this.button);
-    const clicks$ = fromEvent(this.button.nativeElement, 'click');
-    clicks$.subscribe(event => console.log(event));
+    console.log(this.input);
+    const keyupEvents$ = fromEvent(this.input.nativeElement, 'keyup');
+    keyupEvents$.subscribe((event: Event) =>
+      console.log((event.target as HTMLInputElement).value)
+    );
   }
 }
