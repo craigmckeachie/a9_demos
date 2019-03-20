@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { of } from 'rxjs';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-root',
-  template: ``,
+  template: `
+    <button #myButton>Click Me</button>
+  `,
   styles: []
 })
 export class AppComponent implements OnInit {
+  @ViewChild('myButton') button;
   ngOnInit(): void {
-    const observable$ = of(1, 2, 3);
-    observable$.subscribe(x => console.log(x));
-    // of(1, 2, 3).subscribe(x => console.log(x));
+    console.log(this.button);
+    const clicks$ = fromEvent(this.button.nativeElement, 'click');
+    clicks$.subscribe(event => console.log(event));
   }
 }
