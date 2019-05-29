@@ -1,30 +1,29 @@
 import { Component } from '@angular/core';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import * as faker from 'faker';
 
 @Component({
   selector: 'app-root',
   template: `
-    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let movie of movies" cdkDrag>
-        {{ movie }}
+    <cdk-virtual-scroll-viewport itemSize="50" class="list">
+      <div *cdkVirtualFor="let item of items" class="list-item">
+        {{ item }}
       </div>
-    </div>
+    </cdk-virtual-scroll-viewport>
   `,
-  styles: []
+  styles: [
+    `
+      .list {
+        height: 200px;
+        width: 200px;
+        border: 1px solid black;
+      }
+
+      .list-item {
+        height: 50px;
+      }
+    `
+  ]
 })
 export class AppComponent {
-  movies = [
-    'Episode I - The Phantom Menace',
-    'Episode II - Attack of the Clones',
-    'Episode III - Revenge of the Sith',
-    'Episode IV - A New Hope',
-    'Episode V - The Empire Strikes Back',
-    'Episode VI - Return of the Jedi',
-    'Episode VII - The Force Awakens',
-    'Episode VIII - The Last Jedi'
-  ];
-
-  drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.movies, event.previousIndex, event.currentIndex);
-  }
+  items = Array.from({ length: 100000 }).map(() => `${faker.name.findName()}`);
 }
