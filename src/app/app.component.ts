@@ -9,7 +9,7 @@ import { fromEvent } from 'rxjs';
   styles: []
 })
 export class AppComponent implements OnInit {
-  @ViewChild('myButton') button;
+  @ViewChild('myButton', { static: true }) button;
   ngOnInit(): void {
     console.log(this.button);
     const clicks$ = fromEvent(this.button.nativeElement, 'click');
