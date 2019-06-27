@@ -13,14 +13,15 @@ import { Component } from '@angular/core';
         required
         minlength="3"
       /><br />
-      <pre>
-        {{ username.errors | json }}
-      </pre
-      >
-      <br />
-      Dirty: {{ username.dirty | json }} <br />
-      Touched: {{ username.touched | json }} <br />
-      <input type="text" ngModel name="password" placeholder="password" /><br />
+      <div *ngIf="username.hasError('required') && username.dirty">
+        Username is required.
+      </div>
+      <input
+        type="password"
+        ngModel
+        name="password"
+        placeholder="password"
+      /><br />
       <button>Sign In</button>
     </form>
   `,
