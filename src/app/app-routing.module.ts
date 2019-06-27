@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   {
     path: 'movies',
-    loadChildren: '../app/movies/movies.module#MoviesModule'
+    loadChildren: () => import('../app/movies/movies.module').then(m => m.MoviesModule)
   }
 ];
 
