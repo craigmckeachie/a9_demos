@@ -9,7 +9,7 @@ import { fromEvent } from 'rxjs';
   styles: []
 })
 export class AppComponent implements OnInit {
-  @ViewChild('myInput') input;
+  @ViewChild('myInput', { static: true }) input;
   ngOnInit(): void {
     console.log(this.input);
     const keyupEvents$ = fromEvent(this.input.nativeElement, 'keyup');
