@@ -7,9 +7,9 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'app-movie-detail',
   template: `
     <div *ngIf="movie">
-      <h5>{{movie.name}}</h5>
+      <h5>{{ movie.name }}</h5>
       <p>
-        {{movie.description}}
+        {{ movie.description }}
       </p>
     </div>
   `,
@@ -24,8 +24,8 @@ export class MovieDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.route.params.subscribe(p => {
-      const id = +p['id'];
+    this.route.paramMap.subscribe(params => {
+      const id = parseInt(params.get('id'), 10);
       this.movieService.find(id).subscribe(m => (this.movie = m));
     });
   }
