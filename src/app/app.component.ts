@@ -10,30 +10,37 @@ import {
 @Component({
   selector: 'app-root',
   template: `
-  <h1>
-  Forms
-  </h1>
-  <form [formGroup]="loginForm" (submit)="onSubmit()">
-  <input formControlName="username" type="text" name="username">
-  <br>
-  <input formControlName="password" type="text" name="password">
-  <br>
-  <button>Sign In</button>
-  </form>
-  <pre *ngIf="loginForm.get('username').invalid">
-  {{loginForm.get('username').errors | json}}
-  </pre>
-  <pre *ngIf="loginForm.get('password').invalid">
-  {{loginForm.get('password').errors | json}}
-  </pre>
+    <h1>
+      Forms
+    </h1>
+    <form [formGroup]="loginForm" (submit)="onSubmit()">
+      <input formControlName="username" type="text" name="username" />
+      <br />
+      <input formControlName="password" type="password" name="password" />
+      <br />
+      <button>Sign In</button>
+    </form>
+    <pre *ngIf="loginForm.get('username').invalid">
+  {{ loginForm.get('username').errors | json }}
+  </pre
+    >
+    <pre *ngIf="loginForm.get('password').invalid">
+  {{ loginForm.get('password').errors | json }}
+  </pre
+    >
 
-  <div *ngIf="loginForm.get('username').dirty &&
-  loginForm.get('username').invalid &&
-  loginForm.get('username').touched">
-  <div *ngIf="loginForm.get('username').hasError('required')">
-  Username is required.
-  </div>
-`,
+    <div
+      *ngIf="
+        loginForm.get('username').dirty &&
+        loginForm.get('username').invalid &&
+        loginForm.get('username').touched
+      "
+    >
+      <div *ngIf="loginForm.get('username').hasError('required')">
+        Username is required.
+      </div>
+    </div>
+  `,
   styles: []
 })
 export class AppComponent implements OnInit {
