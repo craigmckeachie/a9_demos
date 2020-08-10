@@ -28,11 +28,29 @@ import { RouterOutlet } from '@angular/router';
   animations: [
     trigger('animateRoute', [
       // route 'enter and leave (<=>)' transition
+      // transition('* <=> *', [
+      //   // css styles at start of transition
+      //   style({ opacity: 0 }),
+      //   // animation and styles at end of transition
+      //   animate('1s', style({ opacity: 1 })),
+      // ]),
       transition('* <=> *', [
-        // css styles at start of transition
-        style({ opacity: 0 }),
-        // animation and styles at end of transition
-        animate('1s', style({ opacity: 1 })),
+        style({ position: 'relative' }),
+        query(':enter, :leave', [
+          style({
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+          }),
+        ]),
+        query(':enter', [style({ left: '-100%' })]),
+        query(':leave', animateChild()),
+        group([
+          query(':leave', [animate('300ms ease-out', style({ left: '100%' }))]),
+          query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
+        ]),
+        query(':enter', animateChild()),
       ]),
     ]),
   ],
